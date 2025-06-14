@@ -1,0 +1,60 @@
+🎯 Core Goal:
+A smooth, no-login shopping experience to browse, wishlist, and order jerseys via Google Forms, styled like theclubjersey.co.in.
+🧩 Pages & Components
+1. Homepage
+* Big Banners at the Top (full-width scrolling/sliding banners for promotions/events)
+* Category Navigation (e.g., Club, National, Retro, Offers)
+* Search Bar (centered or top-right)
+   * Search by jersey name, club, player, or keyword
+* Filter Buttons:
+   * Popular
+   * Featured
+   * Price: Low to High
+   * Price: High to Low
+   * Categories (Dropdown)
+* Product Sections:
+   * Featured Jerseys (carousel/scrollable)
+   * Top Deals
+   * New Arrivals
+   * Custom Sections (controlled by admin – e.g., "Summer Sale", "Limited Editions")
+2. Product Cards
+Each jersey card shows:
+* Image
+* Title (e.g., "Argentina Home 2022")
+* Price
+* “Add to Wishlist” button
+* “Buy Now” button → opens Google Form
+3. Wishlist Page
+* View all saved jerseys
+* Option to:
+   * Remove from wishlist
+   * “Buy” → opens Google Form with jersey name auto-filled
+* After form submission: Show “Order placed. We’ll contact you soon!”
+4. Footer
+* Contact info
+* Social media links
+* Terms and conditions / About us
+👤 User Flow
+* No login/signup
+* Browsing is open
+* Wishlist stored locally (browser localStorage)
+* Orders go through Google Form
+* No payments – manual order handling
+🛠️ Admin Features (via hidden panel or simple script)
+* Add/edit/delete jerseys
+* Tag as:
+   * Featured / Popular
+   * Assign to sections (Top Deals, New Arrivals)
+* Upload banner images
+* Set categories
+* Provide/edit Google Form URL for ordering
+🔧 Technical Requirements
+Feature Tool / Approach Frontend React / Next.js (preferred), or simple HTML/CSS Admin Content Control Local JSON file, CMS, or Firebase Firestore Wishlist Browser localStorage Orders Google Form (admin can view via Google Sheets) Hosting Vercel / Netlify / Firebase Hosting
+🎁 Order Process
+1. User adds item to wishlist.
+2. Clicks “Buy Now” → opens Google Form with jersey info pre-filled.
+3. After submission, redirect back to: “Order placed. We’ll contact you soon!”
+
+website for reference https://theclubjersey.co.in
+
+make exactly like this 
