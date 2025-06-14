@@ -111,7 +111,7 @@ export function Header({
                     <SelectValue placeholder="Sort by" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All</SelectItem>
+                    <SelectItem value="all">All</SelectItem>
                     <SelectItem value="popular">Popular</SelectItem>
                     <SelectItem value="featured">Featured</SelectItem>
                     <SelectItem value="price-low">Price: Low to High</SelectItem>
@@ -143,7 +143,7 @@ export function Header({
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
                   <SelectItem value="popular">Popular</SelectItem>
                   <SelectItem value="featured">Featured</SelectItem>
                   <SelectItem value="price-low">Price: Low to High</SelectItem>

@@ -55,12 +55,12 @@ export function ProductCard({ jersey }: ProductCardProps) {
   };
 
   return (
-    <div className="jersey-card">
+    <div className="jersey-card group">
       <div className="relative overflow-hidden">
         <img 
           src={jersey.imageUrl} 
           alt={jersey.name}
-          className="jersey-card-image"
+          className="jersey-card-image group-hover:scale-105"
         />
         
         {/* Discount Badge */}
