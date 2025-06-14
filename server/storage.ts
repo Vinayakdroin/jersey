@@ -181,7 +181,15 @@ export class MemStorage implements IStorage {
 
   async createJersey(insertJersey: InsertJersey): Promise<Jersey> {
     const id = this.currentJerseyId++;
-    const jersey: Jersey = { ...insertJersey, id };
+    const jersey: Jersey = { 
+      ...insertJersey, 
+      id,
+      originalPrice: insertJersey.originalPrice ?? null,
+      tags: insertJersey.tags ?? null,
+      description: insertJersey.description ?? null,
+      season: insertJersey.season ?? null,
+      isActive: insertJersey.isActive ?? true
+    };
     this.jerseys.set(id, jersey);
     return jersey;
   }
@@ -203,7 +211,7 @@ export class MemStorage implements IStorage {
   async getBanners(): Promise<Banner[]> {
     return Array.from(this.banners.values())
       .filter(banner => banner.isActive)
-      .sort((a, b) => a.order - b.order);
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   }
 
   async getBanner(id: number): Promise<Banner | undefined> {
@@ -212,7 +220,15 @@ export class MemStorage implements IStorage {
 
   async createBanner(insertBanner: InsertBanner): Promise<Banner> {
     const id = this.currentBannerId++;
-    const banner: Banner = { ...insertBanner, id };
+    const banner: Banner = { 
+      ...insertBanner, 
+      id,
+      subtitle: insertBanner.subtitle ?? null,
+      ctaText: insertBanner.ctaText ?? null,
+      ctaLink: insertBanner.ctaLink ?? null,
+      isActive: insertBanner.isActive ?? true,
+      order: insertBanner.order ?? 0
+    };
     this.banners.set(id, banner);
     return banner;
   }
@@ -238,8 +254,13 @@ export class MemStorage implements IStorage {
   async createOrder(insertOrder: InsertOrder): Promise<Order> {
     const id = this.currentOrderId++;
     const order: Order = { 
-      ...insertOrder, 
       id,
+      jerseyId: insertOrder.jerseyId ?? null,
+      customerName: insertOrder.customerName ?? null,
+      customerEmail: insertOrder.customerEmail ?? null,
+      customerPhone: insertOrder.customerPhone ?? null,
+      size: insertOrder.size ?? null,
+      status: insertOrder.status ?? "pending",
       createdAt: new Date()
     };
     this.orders.set(id, order);
