@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { AdminLogin } from '@/components/admin-login';
+import { GoogleFormConfig } from '@/components/google-form-config';
 import { Plus, Pencil, Trash2, Save, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -308,6 +309,7 @@ export default function Admin() {
           <TabsList>
             <TabsTrigger value="jerseys">Jerseys</TabsTrigger>
             <TabsTrigger value="banners">Banners</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
           <TabsContent value="jerseys" className="space-y-6">
@@ -347,7 +349,7 @@ export default function Admin() {
                           <p className="text-gray-600">{jersey.team} - {jersey.season}</p>
                           <p className="text-primary-custom font-bold">{formatPrice(jersey.price)}</p>
                           <div className="flex space-x-2 mt-2">
-                            {jersey.tags?.map((tag) => (
+                            {jersey.tags?.map((tag: string) => (
                               <Badge key={tag} variant="outline">{tag}</Badge>
                             ))}
                           </div>
@@ -434,6 +436,13 @@ export default function Admin() {
                   )}
                 </div>
               ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="settings" className="space-y-6">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold">Settings</h2>
+              <GoogleFormConfig />
             </div>
           </TabsContent>
         </Tabs>

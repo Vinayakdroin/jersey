@@ -38,7 +38,7 @@ export function openGoogleForm(data: GoogleFormData): void {
     params.append(FORM_FIELDS.size, data.size);
   }
   
-  const formUrl = `${DEFAULT_FORM_URL}?${params.toString()}`;
+  const formUrl = `${getFormUrl()}?${params.toString()}`;
   
   // Open in new tab
   window.open(formUrl, '_blank', 'noopener,noreferrer');
