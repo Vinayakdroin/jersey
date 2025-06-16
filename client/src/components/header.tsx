@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Search, Heart, Menu, X } from 'lucide-react';
+import { Search, Heart, Menu, X, Settings } from 'lucide-react';
+import { Link } from 'wouter';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -58,7 +59,7 @@ export function Header({
               </div>
             </div>
             
-            {/* Wishlist and Menu */}
+            {/* Wishlist, Admin and Menu */}
             <div className="flex items-center space-x-4">
               <Button
                 variant="ghost"
@@ -73,6 +74,17 @@ export function Header({
                   </span>
                 )}
               </Button>
+              
+              <Link href="/admin">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden md:flex"
+                  title="Admin Panel"
+                >
+                  <Settings className="h-5 w-5" />
+                </Button>
+              </Link>
               
               <Button
                 variant="ghost"

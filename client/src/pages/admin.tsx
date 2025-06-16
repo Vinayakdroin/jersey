@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { AdminLogin } from '@/components/admin-login';
 import { Plus, Pencil, Trash2, Save, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,11 +14,16 @@ import { Jersey, Banner, InsertJersey, InsertBanner } from '@shared/schema';
 import { formatPrice } from '@/lib/google-forms';
 
 export default function Admin() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [editingJersey, setEditingJersey] = useState<Jersey | null>(null);
   const [editingBanner, setEditingBanner] = useState<Banner | null>(null);
   const [isAddingJersey, setIsAddingJersey] = useState(false);
   const [isAddingBanner, setIsAddingBanner] = useState(false);
   const { toast } = useToast();
+
+  if (!isLoggedIn) {
+    return <AdminLogin onLogin={() => setIsLoggedIn(true)} />;
+  }
 
   const { data: jerseys = [], isLoading: jerseysLoading } = useQuery<Jersey[]>({
     queryKey: ['/api/jerseys'],

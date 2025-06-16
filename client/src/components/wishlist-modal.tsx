@@ -1,4 +1,4 @@
-import { X, ShoppingBag, Trash2 } from 'lucide-react';
+import { X, ShoppingBag, Trash2, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useWishlist } from '@/hooks/use-wishlist';
 import { formatPrice, openGoogleForm } from '@/lib/google-forms';

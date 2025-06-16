@@ -1,7 +1,11 @@
 import { GoogleFormData } from './types';
 
-// Default Google Form URL - replace with actual form URL
-const DEFAULT_FORM_URL = import.meta.env.VITE_GOOGLE_FORM_URL || 'https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/viewform';
+// Get Google Form URL from localStorage or use default
+const getFormUrl = () => {
+  return localStorage.getItem('googleFormUrl') || 
+         import.meta.env.VITE_GOOGLE_FORM_URL || 
+         'https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/viewform';
+};
 
 // Form field entry IDs - replace with actual field IDs from your Google Form
 const FORM_FIELDS = {
