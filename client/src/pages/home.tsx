@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Header } from '@/components/header';
 import { BannerCarousel } from '@/components/banner-carousel';
 import { ProductSection } from '@/components/product-section';
+import { VideoSection } from '@/components/video-section';
 import { Footer } from '@/components/footer';
 import { Jersey, Banner } from '@shared/schema';
 

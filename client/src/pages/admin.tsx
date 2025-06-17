@@ -22,10 +22,7 @@ export default function Admin() {
   const [isAddingBanner, setIsAddingBanner] = useState(false);
   const { toast } = useToast();
 
-  if (!isLoggedIn) {
-    return <AdminLogin onLogin={() => setIsLoggedIn(true)} />;
-  }
-
+  // ✅ ALL hooks must be called at the top level, before any conditional returns
   const { data: jerseys = [], isLoading: jerseysLoading } = useQuery<Jersey[]>({
     queryKey: ['/api/jerseys'],
   });
@@ -34,7 +31,7 @@ export default function Admin() {
     queryKey: ['/api/banners'],
   });
 
-  // Jersey mutations
+  // Jersey mutations - moved to top level
   const createJerseyMutation = useMutation({
     mutationFn: (jersey: InsertJersey) => apiRequest('POST', '/api/jerseys', jersey),
     onSuccess: () => {
@@ -71,7 +68,7 @@ export default function Admin() {
     },
   });
 
-  // Banner mutations
+  // Banner mutations - moved to top level
   const createBannerMutation = useMutation({
     mutationFn: (banner: InsertBanner) => apiRequest('POST', '/api/banners', banner),
     onSuccess: () => {
@@ -107,6 +104,11 @@ export default function Admin() {
       toast({ title: 'Error', description: 'Failed to delete banner', variant: 'destructive' });
     },
   });
+
+  // ✅ Now conditionally return content AFTER all hooks
+  if (!isLoggedIn) {
+    return <AdminLogin onLogin={() => setIsLoggedIn(true)} />;
+  }
 
   const JerseyForm = ({ jersey, onSave, onCancel }: any) => {
     const [formData, setFormData] = useState({
